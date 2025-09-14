@@ -14,6 +14,7 @@ from pathlib import Path
 import environ
 import os
 import dj_database_url
+from django.core.management.utils import get_random_secret_key
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,7 +34,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "insecure-dev-key")
+SECRET_KEY = os.environ.get("SECRET_KEY", get_random_secret_key())
 
 ALLOWED_HOSTS = ["*"]
 
